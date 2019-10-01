@@ -11,7 +11,7 @@ To Use:
 // import into code...
 
   env('./envVars.txt');
-  var microdb = require('../microdb')(process.env.MICRODB_MYPASS_DB_APIKEY);
+  var microdb = require('../microdb')(process.env.MICRODB_DB_APIKEY);
   
 
 // Then call a table defined in your database...this example assumes an account table is present
