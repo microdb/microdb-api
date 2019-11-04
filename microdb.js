@@ -53,7 +53,7 @@ var Singleton = (function (apikey, opts) {
     }
 
     function describeTables() {
-      return new Promise((resolve) => {
+        return new Promise(function(resolve) {
         var tables = [];
         var keys = Object.keys(app_instance.Tables);
         for (var index = 0; index < keys.length; index++) {
@@ -75,9 +75,9 @@ var Singleton = (function (apikey, opts) {
       if (!_API_KEY) {
         throw 'API_KEY is required';
       }
-      return new Promise((resolve) => {
+      return new Promise(function(resolve) {
         var clientResponse = new Response();
-        var url = 'https://' + process.env.API_HOST + ':' + process.env.API_PORT + '/' + route;
+        var url = 'https://api.microdb.co:443/' + route;
 
         var reqOptions = {
           preambleCRLF: true,
@@ -156,13 +156,13 @@ var Singleton = (function (apikey, opts) {
     }
 
     function genSchema(res) {
-      return new Promise((resolve) => {
+      return new Promise(function(resolve) {
         if (!res.success) {
           resolve(res);
           return;
         }
         if (res.data.Tables) {
-          res.data.Tables.forEach(element => {
+          res.data.Tables.forEach(function(element) {
             var tblName = scrubTableName(element.Name);
             Object.defineProperty(app_instance.Tables, tblName, {
               value: new Table(element),
@@ -187,11 +187,7 @@ var Singleton = (function (apikey, opts) {
 
       this.Id = __schema.Id;
       this.Name = scrubTableName(__schema.Name);
-      this.CreateDate = __schema.CreateDate;
-      this.CreatedBy = __schema.CreatedBy;
       this.Imported = __schema.Imported;
-      this.UpdateDate = __schema.UpdateDate;
-      this.UpdatedBy = __schema.UpdatedBy;
       this.ColumnHeaders = [];
       this.saveNew = saveNew;
       this.saveUpdate = saveUpdate;
@@ -258,18 +254,18 @@ var Singleton = (function (apikey, opts) {
         }
 
         for (var i = 0; i < datakeys.length; i++) {
-          var col = datakeys[i];
-          if (row.hasOwnProperty(col)) {
-            if (data[col] instanceof Microdb.prototype.File) {
-              row[col].File = data[col];
-              row[col].FileMap = {
-                filename: data[col].fileInfo.filename,
-                originalname: data[col].fileInfo.originalname,
-                fieldname: data[col].fileInfo.fieldname
+          var col2 = datakeys[i];
+          if (row.hasOwnProperty(col2)) {
+            if (data[col2] instanceof Microdb.prototype.File) {
+              row[col2].File = data[col2];
+              row[col2].FileMap = {
+                filename: data[col2].fileInfo.filename,
+                originalname: data[col2].fileInfo.originalname,
+                fieldname: data[col2].fileInfo.fieldname
               };
             }
             else {
-              row[col].Value = data[col];
+              row[col2].Value = data[col2];
             }
 
           }
@@ -320,7 +316,7 @@ var Singleton = (function (apikey, opts) {
       var __col = col;
 
       this.Name = col.Label;
-      this.FormattedName = col.Label.toLowerCase().replace(' ', '_');
+      this.FormattedName = col.Label.toLowerCase().replace(/[\s]/gi, '_');
       this.Value = col.Value || '';
       this.DataType = col.DataType;
       this.DisplayOrder = col.DisplayOrder;
@@ -352,8 +348,8 @@ var Singleton = (function (apikey, opts) {
     }
 
     function Response(response) {
-      this.success;
-      this.error;
+      this.success= '';
+      this.error= '';
       this.message = '';
       this.data = '';
 
