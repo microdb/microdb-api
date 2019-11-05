@@ -13,7 +13,7 @@ https://www.microdb.co is data-as-a-service for applications.
     
 
 ## Usage
-    var microdb = require('microdb')(process.env.MICRODB_MYPASS_DB_APIKEY);
+    var microdb = require('microdb-api')(process.env.MICRODB_MYPASS_DB_APIKEY);
   
     microdb.Tables.account.get({ 'email': 'email@domain_name.com' }).then(function (res) {
         if (res.success){
