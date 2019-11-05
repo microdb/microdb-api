@@ -1,11 +1,11 @@
-# microdb-api-js
+# microdb-api
 
 MicroDB REST API wrapper for Node.js
 
 https://www.microdb.co is data-as-a-service for applications.
 
 ## Install
-    npm install microdb-api-js 
+    npm install microdb-api
 
 ## Set API key and output folder
     Create a envVars.txt file with these values. 
