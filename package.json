@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/microdb/microdb-api-nodejs-client.git"
   },
-  "author": "support@microdb.co",
+  "author": {
+    "name": "MicroDB.co",
+    "email": "support@microdb.co",
+    "url": "https://www.microdb.co"
+  },
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/microdb/microdb-api-nodejs-client/issues"
