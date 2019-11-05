@@ -15,11 +15,8 @@ https://www.microdb.co is data-as-a-service for serverless applications.
 ## Usage
     var microdb = require('microdb')(process.env.MICRODB_MYPASS_DB_APIKEY);
   
-
-  
     microdb.Tables.account.get({ 'email': 'email@domain_name.com' }).then(function (res) {
-        var response = {message:'',success:'',users:[]};      
         if (res.success){
-          response.users = res.data && res.data.Rows? res.data.Rows:[];
+          var user = res.data && res.data.Rows? res.data.Rows:[];
         }
       });
