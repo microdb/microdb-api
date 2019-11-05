@@ -1,30 +1,25 @@
 # microdb-api-nodejs-client
-MicroDB.co officially supported Node.js client library for accessing MicroDB APIs
 
-This module is the glue between the MicroDB API service and your application. 
-It requires your secret API key to make calls to your database on MicroDB.
-It autogenerates code that mirrors your database.
+MicroDB REST API wrapper for Node.js
 
+https://www.microdb.co is data-as-a-service for serverless applications.
 
-To Use:
+## Install
+    npm install microdb 
 
-// import into code...
+## Set API key and output folder
+    Create a envVars.txt file with these values. 
+    - MICRODB_MYPASS_DB_APIKEY = your_db_apikey_from_microdb
+    
 
-  env('./envVars.txt');
-  var microdb = require('../microdb')(process.env.MICRODB_DB_APIKEY);
+## Usage
+    var microdb = require('microdb')(process.env.MICRODB_MYPASS_DB_APIKEY);
   
 
-// Then call a table defined in your database...this example assumes an account table is present
-
-   microdb.Tables.account.get({ 'email': 'email@domain_name.com' }).then(function (res) {
-      var response = {message:'',success:'',users:[]};      
-      if (!res.success){
-        response.message='error attempting to get by email';
-        response.success = false;
-      }
-      else {
-        response.users = res.data && res.data.Rows? res.data.Rows:[];
-        response.success = true;
-      }
-      resolve(response);
-    });
+  
+    microdb.Tables.account.get({ 'email': 'email@domain_name.com' }).then(function (res) {
+        var response = {message:'',success:'',users:[]};      
+        if (res.success){
+          response.users = res.data && res.data.Rows? res.data.Rows:[];
+        }
+      });
