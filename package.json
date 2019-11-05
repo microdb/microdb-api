@@ -1,5 +1,5 @@
 {
-  "name": "microdb-api-js",
+  "name": "microdb-api",
   "version": "1.0.0",
   "description": "MicroDB.co REST API wrapper for Node.js",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microdb/microdb-api-js.git"
+    "url": "git+https://github.com/microdb/microdb-api.git"
   },
   "author": {
     "name": "MicroDB.co",
@@ -17,9 +17,9 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/microdb/microdb-api-js/issues"
+    "url": "https://github.com/microdb/microdb-api/issues"
   },
-  "homepage": "https://github.com/microdb/microdb-api-js#readme",
+  "homepage": "https://github.com/microdb/microdb-api#readme",
   "dependencies": {
     "request": "^2.88.0",
     "node-env-file": "^0.1.8"
