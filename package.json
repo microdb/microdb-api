@@ -1,6 +1,6 @@
 {
   "name": "microdb-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MicroDB.co REST API wrapper for Node.js",
   "main": "index.js",
   "scripts": {
