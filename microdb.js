@@ -301,7 +301,7 @@ var Singleton = (function (apikey, opts) {
     function TableRow(columns) {
       var thisrow = this;
       columns.forEach(function (col) {
-        var name = col.Label.toLowerCase().replace(' ', '_');
+        var name = col.Label.toLowerCase().replace(/[\s]/gi, '_');
         Object.defineProperty(thisrow, name, {
           value: new Column(col),
           enumerable: true,
