@@ -32,12 +32,13 @@ var Singleton = (function (apikey, opts) {
     };
 
     this.describeTables = describeTables;
+    this.getTables=getTables;
     this.Events = mdbevents;
     this.Init = false;
     this.Tables = {};
 
     function init() {
-      getTables().then(function (gtRes) {
+      loadTables().then(function (gtRes) {
         if (!gtRes.success) {
           app_instance.emit(mdbevents.InitFailed);
         }
@@ -48,9 +49,13 @@ var Singleton = (function (apikey, opts) {
       });
     }
 
-    function getTables() {
+    function loadTables() {
       return postMsg('tables/describe', {}).then(genSchema);
     }
+
+    function getTables(){
+      return loadTables().then(describeTables);
+     }
 
     function describeTables() {
         return new Promise(function(resolve) {
