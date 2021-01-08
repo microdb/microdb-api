@@ -167,6 +167,7 @@ var Singleton = (function (apikey, opts) {
           return;
         }
         if (res.data.Tables) {
+          app_instance.Tables={};
           res.data.Tables.forEach(function(element) {
             var tblName = scrubTableName(element.Name);
             Object.defineProperty(app_instance.Tables, tblName, {
